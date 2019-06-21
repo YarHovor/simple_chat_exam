@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chat{% endblock %}
+
+{% block body %}
+<div align="center">
+
+    <br>  Simple Chat Test Projects
+
+
+<div>
+    <br>
+    {{ form_start(form, {'attr': {'novalidate': true}}) }}
+    {{ form_widget(form) }} <button type="submit"><i> Send</i></button>
+    {{ form_end(form) }}
+</div>
+
+    {% for chat in chats %}
+<br>
+
+        <table cellpadding="1">
+            <tr>
+                <th>
+                    created:
+                </th>
+                <th>
+                    text:
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    {{ (chat.created)|date('Y-m-d H:i:s')}}
+                </td>
+                <td>
+                    {{ chat.text }}
+                </td>
+            </tr>
+        </table>
+    {% endfor %}
+</div>
+{% endblock %}
