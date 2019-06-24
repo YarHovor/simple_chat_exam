@@ -1,41 +1,65 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Chat{% endblock %}
+{% block title %}Simple Chat Test Projects
+{% endblock %}
 
 {% block body %}
-<div align="center">
 
-    <br>  Simple Chat Test Projects
+    <style>
+        .table-text {
+            width: 70%;
+        }
 
+        .table-line {
+            border-bottom-width: 5px; /* Толщина линии внизу */
+            border-bottom-style: solid; /* Стиль линии внизу */
+            border-bottom-color: #DCDCDC; /* Цвет линии внизу */
+        }
 
-<div>
-    <br>
-    {{ form_start(form, {'attr': {'novalidate': true}}) }}
-    {{ form_widget(form) }} <button type="submit"><i> Send</i></button>
-    {{ form_end(form) }}
-</div>
+        .container-main {
+            text-align: center;
+            position: center;
+            margin-top: 70px;
+        }
 
-    {% for chat in chats %}
-<br>
+        .card {
+            padding: 10px;
+            border: 2px solid lightgrey;
+        }
 
-        <table cellpadding="1">
-            <tr>
-                <th>
-                    created:
-                </th>
-                <th>
-                    text:
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    {{ (chat.created)|date('Y-m-d H:i:s')}}
-                </td>
-                <td>
-                    {{ chat.text }}
-                </td>
-            </tr>
-        </table>
-    {% endfor %}
-</div>
+    </style>
+
+    <div class="container-main ">
+        <h1>Simple Chat Test Projects</h1>
+        <br>
+        <div class="form-group">
+            {{ form_start(form, {'attr': {'novalidate': true}}) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-success js-send">Send</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead class="table-line">
+                    <tr>
+                        <th class="">created</th>
+                        <th class="table-text">text</th>
+                    </tr>
+                    </thead> {% for chat in chats %}
+                        <tbody>
+                        <tr>
+                            <td>{{ (chat.created)|date('Y-m-d H:i:s') }}</td>
+                            <td>{{ chat.text }}</td>
+                        </tr>
+                        </tbody>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
