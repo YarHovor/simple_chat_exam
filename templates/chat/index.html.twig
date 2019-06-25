@@ -39,27 +39,29 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <table class="table">
-                    <thead class="table-line">
-                    <tr>
-                        <th class="">created</th>
-                        <th class="table-text">text</th>
-                    </tr>
-                    </thead> {% for chat in chats %}
-                        <tbody>
+    {#<span id="js-answer-table">#}
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="table-line">
                         <tr>
-                            <td>{{ (chat.created)|date('Y-m-d H:i:s') }}</td>
-                            <td>{{ chat.text }}</td>
+                            <th class="">created</th>
+                            <th class="table-text">text</th>
                         </tr>
-                        </tbody>
+                        </thead> {% for chat in chats %}
+                            <tbody>
+                            <tr>
+                                <td>{{ (chat.created)|date('Y-m-d H:i:s') }}</td>
+                                <td>{{ chat.text }}</td>
+                            </tr>
+                            </tbody>
 
-                    {% endfor %}
-                </table>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    {#</span>#}
 
 {% endblock %}
